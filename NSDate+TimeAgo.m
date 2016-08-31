@@ -29,37 +29,37 @@ NSLocalizedStringFromTableInBundle(key, @"NSDateTimeAgo", [NSBundle bundleWithPa
     
     int value;
     
-    if(deltaSeconds < 60)
+    if (deltaSeconds < 60)
     {
-        return [self stringFromFormat:@"%%d%@s" withValue:deltaSeconds];
+        return [self stringFromFormat:@"%%d%@Sek" withValue:deltaSeconds];
     }
     else if (deltaMinutes < 60)
     {
-        return [self stringFromFormat:@"%%d%@m" withValue:deltaMinutes];
+        return [self stringFromFormat:@"%%d%@Min." withValue:deltaMinutes];
     }
     else if (deltaMinutes < (24 * 60))
     {
         value = (int)floor(deltaMinutes/60);
-        return [self stringFromFormat:@"%%d%@h" withValue:value];
+        return [self stringFromFormat:@"%%d%@Std." withValue:value];
     }
     else if (deltaMinutes < (24 * 60 * 7))
     {
         value = (int)floor(deltaMinutes/(60 * 24));
-        return [self stringFromFormat:@"%%d%@d" withValue:value];
+        return [self stringFromFormat:@"%%d%@T" withValue:value];
     }
     else if (deltaMinutes < (24 * 60 * 31))
     {
         value = (int)floor(deltaMinutes/(60 * 24 * 7));
-        return [self stringFromFormat:@"%%d%@w" withValue:value];
+        return [self stringFromFormat:@"%%d%@W" withValue:value];
     }
     else if (deltaMinutes < (24 * 60 * 365.25))
     {
         value = (int)floor(deltaMinutes/(60 * 24 * 30));
-        return [self stringFromFormat:@"%%d%@mo" withValue:value];
+        return [self stringFromFormat:@"%%d%@M" withValue:value];
     }
     
     value = (int)floor(deltaMinutes/(60 * 24 * 365));
-    return [self stringFromFormat:@"%%d%@yr" withValue:value];
+    return [self stringFromFormat:@"%%d%@J" withValue:value];
 }
 
 - (NSString *)timeAgo
